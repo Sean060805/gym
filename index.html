@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitZone Gym</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111, #222);
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      color: #f39c12;
+      font-size: 28px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    }
+
+    .hero-content h2 {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 10px;
+      background: #f39c12;
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+    }
+
+    section {
+      padding: 70px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+      color: #f39c12;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #1b1b1b;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #2f2f2f;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #f39c12;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #f39c12;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .price-box {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #333;
+    }
+
+    .price-box h3 {
+      margin-bottom: 15px;
+      color: #f39c12;
+    }
+
+    .price-box h2 {
+      margin-bottom: 15px;
+      font-size: 34px;
+    }
+
+    .price-box ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .price-box ul li {
+      margin: 10px 0;
+      color: #ddd;
+    }
+
+    .cta {
+      text-align: center;
+      background: #181818;
+    }
+
+    footer {
+      text-align: center;
+      background: #0b0b0b;
+      padding: 20px;
+      color: #aaa;
+      border-top: 1px solid #222;
+    }
+
+    .announcement {
+      background: #f39c12;
+      color: #111;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h2 {
+        font-size: 36px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement" id="announcementBar">
+    New Year Promo: Get 20% OFF on Annual Membership!
+  </div>
+
+  <header>
+    <nav>
+      <h1>FitZone Gym</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Programs</a></li>
+        <li><a href="#pricing">Membership</a></li>
+        <li><a href="login_register.html">Login/Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Transform Your Body. Transform Your Life.</h2>
+      <p>
+        Join FitZone Gym and experience world-class equipment, expert trainers,
+        flexible membership plans, and a motivating fitness environment.
+      </p>
+      <a href="login_register.html" class="btn">Join Now</a>
+      <a href="#pricing" class="btn">View Plans</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Why Choose FitZone?</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Modern Equipment</h3>
+        <p>Train with premium cardio, strength, and functional workout machines.</p>
+      </div>
+      <div class="card">
+        <h3>Certified Trainers</h3>
+        <p>Get guidance from professionals who can help you reach your fitness goals faster.</p>
+      </div>
+      <div class="card">
+        <h3>Flexible Schedule</h3>
+        <p>We are open daily with convenient training hours for students and professionals.</p>
+      </div>
+      <div class="card">
+        <h3>Supportive Community</h3>
+        <p>Stay inspired and motivated with a positive and energetic gym atmosphere.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Our Programs</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Weight Training</h3>
+        <p>Build muscle and strength with full access to our weights and machines.</p>
+      </div>
+      <div class="card">
+        <h3>Cardio Fitness</h3>
+        <p>Improve endurance through treadmill, cycling, rowing, and HIIT workouts.</p>
+      </div>
+      <div class="card">
+        <h3>Personal Coaching</h3>
+        <p>Work one-on-one with a coach for a customized fitness plan.</p>
+      </div>
+      <div class="card">
+        <h3>Group Classes</h3>
+        <p>Join fun and energetic sessions like Zumba, yoga, and circuit training.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title">Membership Plans</h2>
+    <div class="pricing">
+      <div class="price-box">
+        <h3>Basic</h3>
+        <h2>$20/mo</h2>
+        <ul>
+          <li>Gym Access</li>
+          <li>Locker Use</li>
+          <li>Free Orientation</li>
+        </ul>
+        <a href="login_register.html" class="btn">Choose Plan</a>
+      </div>
+      <div class="price-box">
+        <h3>Standard</h3>
+        <h2>$35/mo</h2>
+        <ul>
+          <li>Gym Access</li>
+          <li>Group Classes</li>
+          <li>Fitness Assessment</li>
+        </ul>
+        <a href="login_register.html" class="btn">Choose Plan</a>
+      </div>
+      <div class="price-box">
+        <h3>Premium</h3>
+        <h2>$60/mo</h2>
+        <ul>
+          <li>All Standard Features</li>
+          <li>Personal Trainer Session</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="login_register.html" class="btn">Choose Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2 class="section-title">Start Your Fitness Journey Today</h2>
+    <p style="text-align:center; max-width:700px; margin:0 auto 25px;">
+      Sign up now and become part of a strong, healthy, and confident community.
+    </p>
+    <a href="login_register.html" class="btn">Register Now</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 FitZone Gym. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const promos = [
+      "New Year Promo: Get 20% OFF on Annual Membership!",
+      "Free 1-Day Trial for New Members!",
+      "Bring a Friend and Get Special Rewards!"
+    ];
+
+    let promoIndex = 0;
+    const announcementBar = document.getElementById("announcementBar");
+
+    setInterval(() => {
+      promoIndex = (promoIndex + 1) % promos.length;
+      announcementBar.textContent = promos[promoIndex];
+    }, 4000);
+  </script>
+</body>
+</html>

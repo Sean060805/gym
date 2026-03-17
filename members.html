@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members - FitZone Gym</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: white;
+      padding: 25px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    h1 {
+      color: #f39c12;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #f39c12;
+      color: #111;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input, select {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #1b1b1b;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid #333;
+      text-align: left;
+    }
+
+    th {
+      background: #1f1f1f;
+      color: #f39c12;
+    }
+
+    tr:hover {
+      background: #202020;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .active {
+      background: #1f6f3e;
+      color: #d7ffe5;
+    }
+
+    .inactive {
+      background: #6b1d1d;
+      color: #ffdede;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Member Information</h1>
+    <a href="admin_dashboard.html" class="btn">Back to Dashboard</a>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="Search member name..." />
+    <select id="filterPlan">
+      <option value="">All Plans</option>
+      <option value="Basic">Basic</option>
+      <option value="Standard">Standard</option>
+      <option value="Premium">Premium</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Member ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Plan</th>
+        <th>Status</th>
+        <th>Join Date</th>
+      </tr>
+    </thead>
+    <tbody id="memberTable">
+      <tr>
+        <td>M001</td>
+        <td>John Carter</td>
+        <td>john@gmail.com</td>
+        <td>Premium</td>
+        <td><span class="badge active">Active</span></td>
+        <td>2026-01-12</td>
+      </tr>
+      <tr>
+        <td>M002</td>
+        <td>Sarah Lee</td>
+        <td>sarah@gmail.com</td>
+        <td>Standard</td>
+        <td><span class="badge active">Active</span></td>
+        <td>2026-01-20</td>
+      </tr>
+      <tr>
+        <td>M003</td>
+        <td>Michael Ross</td>
+        <td>michael@gmail.com</td>
+        <td>Basic</td>
+        <td><span class="badge inactive">Inactive</span></td>
+        <td>2026-02-03</td>
+      </tr>
+      <tr>
+        <td>M004</td>
+        <td>Anna Cruz</td>
+        <td>anna@gmail.com</td>
+        <td>Premium</td>
+        <td><span class="badge active">Active</span></td>
+        <td>2026-02-11</td>
+      </tr>
+      <tr>
+        <td>M005</td>
+        <td>David Tan</td>
+        <td>david@gmail.com</td>
+        <td>Standard</td>
+        <td><span class="badge active">Active</span></td>
+        <td>2026-02-16</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const filterPlan = document.getElementById("filterPlan");
+    const memberRows = document.querySelectorAll("#memberTable tr");
+
+    function filterMembers() {
+      const searchValue = searchInput.value.toLowerCase();
+      const selectedPlan = filterPlan.value;
+
+      memberRows.forEach(row => {
+        const name = row.cells[1].textContent.toLowerCase();
+        const plan = row.cells[3].textContent;
+
+        const matchSearch = name.includes(searchValue);
+        const matchPlan = selectedPlan === "" || plan === selectedPlan;
+
+        row.style.display = matchSearch && matchPlan ? "" : "none";
+      });
+    }
+
+    searchInput.addEventListener("input", filterMembers);
+    filterPlan.addEventListener("change", filterMembers);
+  </script>
+</body>
+</html>

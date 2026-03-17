@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitZone Gym - Login & Register</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #111, #222);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 950px;
+      background: #1a1a1a;
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .panel {
+      padding: 40px;
+    }
+
+    .left {
+      background: linear-gradient(135deg, #f39c12, #e67e22);
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .left p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .right h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #f39c12;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      background: #222;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .tab-btn.active {
+      background: #f39c12;
+      color: #111;
+      font-weight: bold;
+    }
+
+    form {
+      display: none;
+    }
+
+    form.active {
+      display: block;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #ddd;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px;
+      background: #f39c12;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #111;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #fff;
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 15px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      background: rgba(255,255,255,0.6);
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .success {
+      background: #1f6f3e;
+      color: #d9ffe7;
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="panel left">
+      <h1>FitZone Gym</h1>
+      <p>
+        Welcome to FitZone Gym. Log in to manage your membership or register now
+        to start your fitness journey with us.
+      </p>
+      <a href="index.html" class="home-link">Back to Home</a>
+    </div>
+
+    <div class="panel right">
+      <h2>Member Access</h2>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showForm('login')">Login</button>
+        <button class="tab-btn" onclick="showForm('register')">Register</button>
+      </div>
+
+      <form id="loginForm" class="active">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <form id="registerForm">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter full name" required />
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="Create password" required />
+        </div>
+        <div class="input-group">
+          <label>Membership Plan</label>
+          <select required>
+            <option value="">Select Plan</option>
+            <option>Basic</option>
+            <option>Standard</option>
+            <option>Premium</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
+
+      <div id="messageBox" class="message success"></div>
+      <p class="note">This is a front-end template. Connect it to your database later.</p>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const messageBox = document.getElementById("messageBox");
+
+    function showForm(type) {
+      if (type === "login") {
+        loginForm.classList.add("active");
+        registerForm.classList.remove("active");
+        tabButtons[0].classList.add("active");
+        tabButtons[1].classList.remove("active");
+      } else {
+        registerForm.classList.add("active");
+        loginForm.classList.remove("active");
+        tabButtons[1].classList.add("active");
+        tabButtons[0].classList.remove("active");
+      }
+
+      messageBox.style.display = "none";
+    }
+
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      messageBox.style.display = "block";
+      messageBox.textContent = "Login successful! Redirect to dashboard here.";
+    });
+
+    registerForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      messageBox.style.display = "block";
+      messageBox.textContent = "Registration successful! Member account created.";
+      registerForm.reset();
+    });
+  </script>
+</body>
+</html>
